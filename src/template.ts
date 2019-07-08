@@ -71,7 +71,8 @@ body {
 
 .title {
   font-size: 8em;
-  height: 3em;
+  line-height: 1.05em;
+  height: 3.15em;
   overflow: hidden;
   color: #313131;
 }
