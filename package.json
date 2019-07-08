@@ -1,0 +1,21 @@
+{
+  "name": "fg-meter",
+  "version": "1.0.0",
+  "description": "Generate a goal meter for a FlipGive Team",
+  "main": "dist/card.js",
+  "scripts": {
+    "dev": "now dev",
+    "build": "tsc",
+    "now-build": "tsc",
+    "watch": "tsc --watch"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "chrome-aws-lambda": "1.11.1",
+    "puppeteer-core": "1.11.0"
+  },
+  "devDependencies": {
+    "@types/puppeteer-core": "1.9.0",
+    "typescript": "3.4.1"
+  }
+}
