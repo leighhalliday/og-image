@@ -1,6 +1,6 @@
 {
-  "name": "og-image",
-  "alias": ["og-image.now.sh"],
+  "name": "leighhalliday-og-image",
+  "alias": ["leighhalliday-og-image.now.sh"],
   "version": 2,
   "regions": ["iad1", "sfo1"],
   "public": false,
