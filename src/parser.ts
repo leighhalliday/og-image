@@ -21,7 +21,6 @@ export function parseRequest(req: IncomingMessage) {
   }
 
   const parsedRequest: ParsedRequest = {
-    fileType: "jpeg",
     title,
     author,
     image,

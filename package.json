@@ -1,7 +1,7 @@
 {
-  "name": "fg-meter",
+  "name": "leighhalliday-og-image",
   "version": "1.0.0",
-  "description": "Generate a goal meter for a FlipGive Team",
+  "description": "Generate an OG Image",
   "main": "dist/card.js",
   "scripts": {
     "dev": "now dev",

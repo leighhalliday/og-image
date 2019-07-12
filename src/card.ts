@@ -13,18 +13,21 @@ export default async function handler(
   try {
     const parsedReq = parseRequest(req);
     const html = getHtml(parsedReq);
+
     if (parsedReq.debug) {
       res.setHeader("Content-Type", "text/html");
       res.end(html);
       return;
     }
-    const { title, author, fileType } = parsedReq;
+
+    const { author, title } = parsedReq;
     const fileName = `${author}-${title}`;
     const filePath = await writeTempFile(fileName, html);
     const fileUrl = pathToFileURL(filePath);
-    const file = await getScreenshot(fileUrl, fileType, isDev);
+    const file = await getScreenshot(fileUrl, isDev);
+
     res.statusCode = 200;
-    res.setHeader("Content-Type", `image/${fileType}`);
+    res.setHeader("Content-Type", `image/jpeg`);
     res.setHeader(
       "Cache-Control",
       `public, immutable, no-transform, s-maxage=21600, max-age=21600`

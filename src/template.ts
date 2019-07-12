@@ -1,3 +1,5 @@
+import { sanitizeHtml } from "./sanitizer";
+
 function getCss() {
   return `
 /* http://meyerweb.com/eric/tools/css/reset/
@@ -56,7 +58,7 @@ table {
 body {
   background: #95adbe;
   height: 100vh;
-  font-family: 'Raleway', sans-serif;
+  font-family: 'Barlow Condensed', sans-serif;
   font-size: 18px;
   padding: 20px;
 }
@@ -112,16 +114,16 @@ export function getHtml(parsedReq: ParsedRequest) {
   <meta charset="utf-8">
   <title>Generated Image</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link href="https://fonts.googleapis.com/css?family=Raleway&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Barlow+Condensed&display=swap" rel="stylesheet">
   <style>
     ${getCss()}
   </style>
   <body>
     <div class="container">
-      <div class="title">${title}</div>
+      <div class="title">${sanitizeHtml(title)}</div>
       <div class="author">
         <img src="${image}" class="author-image" />
-        ${author}
+        ${sanitizeHtml(author)}
       </div>
       <div class="website">${website}</div>
     </div>

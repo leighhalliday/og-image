@@ -1,25 +1,15 @@
-import { launch, Page } from "puppeteer-core";
-import { getOptions as getLaunchOptions } from "./options";
-let _page: Page | null;
+import { launch } from "puppeteer-core";
+import { getLaunchOptions } from "./options";
 
 async function getPage(isDev: boolean) {
-  if (_page) {
-    return _page;
-  }
   const options = await getLaunchOptions(isDev);
   const browser = await launch(options);
-  _page = await browser.newPage();
-  return _page;
+  return browser.newPage();
 }
 
-export async function getScreenshot(
-  url: string,
-  type: FileType,
-  isDev: boolean
-) {
+export async function getScreenshot(url: string, isDev: boolean) {
   const page = await getPage(isDev);
   await page.setViewport({ width: 1200, height: 630 });
   await page.goto(url);
-  const file = await page.screenshot({ type, quality: 100 });
-  return file;
+  return await page.screenshot({ type: "jpeg", quality: 100 });
 }
