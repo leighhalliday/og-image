@@ -1,6 +1,33 @@
 import { sanitizeHtml } from "./sanitizer";
 
-function getCss() {
+function gradient() {
+  const gradients = [
+    `radial-gradient( circle farthest-corner at 12.3% 19.3%,  rgba(85,88,218,1) 0%, rgba(95,209,249,1) 100.2% )`,
+    `linear-gradient( 116.9deg,  rgba(232,10,116,1) -9.3%, rgba(244,79,79,1) 77.3% )`,
+    `linear-gradient(to right, #f12711, #f5af19)`,
+    `linear-gradient(to right, #00f260, #0575e6)`,
+    `linear-gradient(to right, #ff9966, #ff5e62)`,
+    `linear-gradient(to right, #7f00ff, #e100ff)`,
+    `linear-gradient(to right, #396afc, #2948ff)`,
+    `linear-gradient(to right, #eb5757, #000000)`,
+    `linear-gradient(to right, #e44d26, #f16529)`,
+    `linear-gradient(to right, #ee0979, #ff6a00)`,
+    `linear-gradient(to right, #834d9b, #d04ed6)`,
+    `linear-gradient(to right, #ff0084, #33001b)`,
+    `linear-gradient(to right, #42275a, #734b6d)`
+  ];
+
+  return gradients[Math.floor(Math.random() * gradients.length)];
+}
+
+function getCss(titleLength: number) {
+  let fontSize = 200;
+  if (titleLength > 50) {
+    fontSize = 130;
+  } else if (titleLength > 20) {
+    fontSize = 140;
+  }
+
   return `
 /* http://meyerweb.com/eric/tools/css/reset/
   v2.0 | 20110126
@@ -56,7 +83,7 @@ table {
 }
 
 body {
-  background: #95adbe;
+  background-image: ${gradient()};
   height: 100vh;
   font-family: 'Barlow Condensed', sans-serif;
   font-size: 18px;
@@ -67,14 +94,14 @@ body {
   position: relative;
   height: calc(100vh - 40px);
   padding: 20px;
-  background: #f8f8f8;
+  background: rgba(248, 248, 248, 0.8);
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
 }
 
 .title {
-  font-size: 8em;
-  line-height: 1.05em;
-  height: 3.15em;
+  font-size: ${fontSize}px;
+  line-height: ${fontSize + 5}px;
+  height: ${(fontSize + 10) * 3}px;
   overflow: hidden;
   color: #313131;
 }
@@ -116,7 +143,7 @@ export function getHtml(parsedReq: ParsedRequest) {
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link href="https://fonts.googleapis.com/css?family=Barlow+Condensed&display=swap" rel="stylesheet">
   <style>
-    ${getCss()}
+    ${getCss(title.length)}
   </style>
   <body>
     <div class="container">
