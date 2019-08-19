@@ -22,8 +22,12 @@ function gradient() {
 
 function getCss(titleLength: number) {
   let fontSize = 200;
-  if (titleLength > 50) {
-    fontSize = 130;
+  let lines = 3;
+  if (titleLength > 60) {
+    fontSize = 110;
+    lines = 4;
+  } else if (titleLength > 50) {
+    fontSize = 120;
   } else if (titleLength > 20) {
     fontSize = 140;
   }
@@ -101,7 +105,7 @@ body {
 .title {
   font-size: ${fontSize}px;
   line-height: ${fontSize + 5}px;
-  height: ${(fontSize + 10) * 3}px;
+  height: ${(fontSize + 10) * lines}px;
   overflow: hidden;
   color: #313131;
 }
