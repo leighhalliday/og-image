@@ -23,7 +23,10 @@ function gradient() {
 function getCss(titleLength: number) {
   let fontSize = 200;
   let lines = 3;
-  if (titleLength > 60) {
+  if (titleLength > 80) {
+    fontSize = 90;
+    lines = 4;
+  } else if (titleLength > 60) {
     fontSize = 110;
     lines = 4;
   } else if (titleLength > 50) {
